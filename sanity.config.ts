@@ -11,6 +11,7 @@ import { apiVersion, dataset, projectId } from './sanity/env'
 import { media } from 'sanity-plugin-media'
 import { settingsPlugin } from './sanity/settings';
 import { PreviewPlugin } from './sanity/productionUrl';
+import { googleMapsInput } from '@sanity/google-maps-input';
 
 //  DOCUMENTS
 import authorType from './sanity/schemas/documents/author'
@@ -193,6 +194,9 @@ export default defineConfig({
           .title('Content')
           .items([profileListItem, appearanceListItem, PageSettingsListItem, S.divider(), NeighborhoodListItem, AvailabilitiesListItem, S.divider(), ...defaultListItems])
       },
+    }),
+    googleMapsInput({
+      apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API || ''
     }),
     settingsPlugin({ types: [appearanceDocument.name, pageSettingsDocument.name, profileDocument.name] }),
     PreviewPlugin({ types: ['pages', 'team', 'legal', 'services', 'blog', 'homeDesign'] }),

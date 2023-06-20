@@ -1,5 +1,6 @@
 import { defineType } from "sanity";
 import { AiOutlineHome } from "react-icons/ai"
+import { pageBuilderSchema } from "../lib/classes";
 
 export default defineType({
     title: 'Home',
@@ -33,24 +34,7 @@ export default defineType({
             title: 'Page Builder',
             name: 'pageBuilder',
             type: 'array',
-            of: [
-                {type: 'hero'},
-                {type: 'contentField'},
-                {type: 'featuredGrid'},
-                {type: 'ctaSection'},
-                {type: 'disclosureSection'},
-                {type: 'logos'},
-                {type: 'gallery'},
-                {type: 'pricing'},
-                {type: 'codeBlock'},
-                {type: 'contactPage'},
-                {type: 'testimonialBuilder'},
-                {type: 'teamDisplay'},
-                {type: 'blogDisplay'},
-                {type: 'servicesDisplay'},
-                {type: 'leadForm'},
-
-            ]
+            of: pageBuilderSchema
         }
     ]
 })

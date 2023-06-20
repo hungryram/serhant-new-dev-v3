@@ -52,14 +52,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${websiteName}/legal/`,
       lastModified: new Date(),
     },
-    {
-      url: `${websiteName}/team/`,
-      lastModified: new Date(),
-    },
-    {
-      url: `${websiteName}/services/`,
-      lastModified: new Date(),
-    },
   ];
 
   // Concatenate the dynamic and static sitemap entries

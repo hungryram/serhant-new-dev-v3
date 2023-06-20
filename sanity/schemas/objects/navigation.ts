@@ -1,5 +1,6 @@
 import { defineType } from "sanity";
 import { BsLink } from "react-icons/bs"
+import { pageTypes } from "../lib/classes";
 
 export default defineType({
     name: 'navigationItem',
@@ -35,14 +36,7 @@ export default defineType({
             description: 'Select pages for navigation',
             type: 'reference',
             hidden: ({ parent }) => parent?.linkType !== "internal",
-            to: [
-                { type: 'blog' },
-                { type: 'author' },
-                { type: 'pages' },
-                { type: 'location' },
-                { type: 'services' },
-                { type: 'team' }
-            ],
+            to: pageTypes
         },
         {
             name: 'externalUrl',

@@ -1,4 +1,5 @@
 import { defineType } from "sanity";
+import { pageTypes } from "../lib/classes";
 
 export default defineType({
     title: 'Links',
@@ -28,12 +29,7 @@ export default defineType({
             description: 'Select pages for navigation',
             type: 'reference',
             hidden: ({ parent }) => parent?.linkType !== "internal",
-            to: [
-                { type: 'blog' },
-                { type: 'pages' },
-                { type: 'legal' },
-                { type: 'services' },
-            ],
+            to: pageTypes
         },
         {
             name: 'externalUrl',

@@ -28,13 +28,15 @@ import HeroBasic from "./hero-basic";
 import DisclosureSeparate from "./disclosure-separate";
 import TestimonialsColumn from "./testimonials-column";
 import LeadFormTwoColumn from "./leadform-two-column";
+import Map from "./map";
+import AvailabilityTable from "./availability-table";
 
 interface Props {
     pageBuilder: any[];
-    allTestimonials: any[];
-    allServices: any[];
-    allTeam: any[];
-    allBlog: any[];
+    allTestimonials: any;
+    allBlog: any;
+    allNeighborhood: any;
+    allAvailabilities: any;
     // CONTACT
     email: string;
     phone_number: string;
@@ -63,9 +65,9 @@ interface Props {
 export default function Main({
     pageBuilder,
     allTestimonials,
-    allServices,
-    allTeam,
     allBlog,
+    allNeighborhood,
+    allAvailabilities,
     // CONTACT
     email,
     phone_number,
@@ -223,6 +225,31 @@ export default function Main({
                                 />
                             }
                         </>
+                    );
+                }
+
+                if (section._type === 'mapDisplay') {
+                    return (
+                        <Map
+                            key={section?._key}
+                            content={section?.content}
+                            textAlign={section?.textAlign}
+                            mapNames={allNeighborhood?.neighborhoods}
+                            condo={allNeighborhood?.condo}
+                            {...settingsSchema}
+                        />
+                    );
+                }
+
+                if (section._type === 'availabilityDisplay') {
+                    return (
+                        <AvailabilityTable
+                            key={section?._key}
+                            content={section?.content}
+                            textAlign={section?.textAlign}
+                            availabilities={allAvailabilities}
+                            {...settingsSchema}
+                        />
                     );
                 }
 
@@ -473,46 +500,6 @@ export default function Main({
                                 />
                             }
                         </>
-                    );
-                }
-
-                if (section._type === 'servicesDisplay') {
-                    return (
-                        <>
-                            {section?.layoutType === 'noImage' ?
-                                <ServicesNoImage
-                                    key={section?._key}
-                                    services={allServices}
-                                    columnNumber={section?.columnNumber}
-                                    content={section?.content}
-                                    imageData={section?.imageData?.asset?.url}
-                                    textAlign={section?.textAlign}
-                                    {...settingsSchema}
-                                />
-                                :
-                                <ServiceGrid
-                                    key={section?._key}
-                                    services={allServices}
-                                    content={section?.content}
-                                    imageData={section?.imageData?.asset?.url}
-                                    columnNumber={section?.columnNumber}
-                                    textAlign={section?.textAlign}
-                                    {...settingsSchema}
-                                />
-                            }
-                        </>
-                    );
-                }
-
-                if (section._type === 'teamDisplay') {
-                    return (
-                        <TeamComponent
-                            key={section?._key}
-                            team={allTeam}
-                            content={section?.content}
-                            textAlign={section?.textAlign}
-                            {...settingsSchema}
-                        />
                     );
                 }
 

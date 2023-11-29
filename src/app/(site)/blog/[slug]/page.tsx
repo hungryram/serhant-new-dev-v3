@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next';
 import { format, parseISO } from 'date-fns'
 import ContentEditor from '../../components/util/content-editor'
+export const revalidate = 0
 
 type Props = {
     params: {

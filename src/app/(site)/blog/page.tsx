@@ -5,6 +5,7 @@ import BlogCard from "../components/templates/blog-card"
 import { format, parseISO } from 'date-fns'
 import { Metadata } from 'next';
 import ContentEditor from "../components/util/content-editor"
+export const revalidate = 0
 
 // GENERATES SEO
 export async function generateMetadata(): Promise<Metadata> {

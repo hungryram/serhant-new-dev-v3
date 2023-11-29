@@ -43,14 +43,26 @@ export default function CalltoActionTextImage({
     const styles = {
         paddingTop: paddingTop ?? '5rem',
         paddingBottom: paddingBottom ?? '5rem',
-      }
-    
-      const allStyles = { ...backgroundStyles, ...styles }
+    }
+
+    const allStyles = { ...backgroundStyles, ...styles }
 
     return (
         <div style={allStyles}>
             <div className="container">
                 <div className={`${Styles.ctaTextImageWrapper} space-y-10 ${reverseColumn ? 'flex-row-reverse' : ''}`}>
+                    {image &&
+                        <div className="lg:w-1/2">
+                            <Image
+                                src={image}
+                                alt={altText}
+                                placeholder={blurData ? 'blur' : 'empty'}
+                                blurDataURL={blurData}
+                                width={1824}
+                                height={1080}
+                            />
+                        </div>
+                    }
                     <div className="lg:w-1/2">
                         {(content || primaryButtonLink || secondaryButtonLink) && (
                             <HeaderSection
@@ -66,20 +78,6 @@ export default function CalltoActionTextImage({
                                 secondaryButtonStyle={secondaryButtonStyle}
                             />
                         )}
-                    </div>
-                    <div className="lg:w-1/2">
-                        {image ?
-                            <Image
-                                src={image}
-                                alt={altText}
-                                placeholder={blurData ? 'blur' : 'empty'}
-                                blurDataURL={blurData}
-                                width={1824}
-                                height={1080}
-                            />
-                            :
-                            <img src={ctaData.image} alt="placeholder" />
-                        }
                     </div>
                 </div>
             </div>

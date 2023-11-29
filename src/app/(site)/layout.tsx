@@ -16,7 +16,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: data?.profileSettings?.seo?.title_tag,
     description: data?.profileSettings?.seo?.meta_description,
-    themeColor: data?.appearances?.mainColors?.primaryColor?.hex,
     metadataBase: new URL(data?.profileSettings?.settings?.websiteName ?? 'http://localhost:3000'),
     alternates: {
       canonical: '/'
@@ -130,10 +129,10 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      {data?.profileSettings?.settings?.googleID &&
-        <GoogleAnalytics GA_TRACKING_ID={data?.profileSettings?.settings?.googleID} />
-      }
       <body className={interFont.variable}>
+        {data?.profileSettings?.settings?.googleID &&
+          <GoogleAnalytics GA_TRACKING_ID={data?.profileSettings?.settings?.googleID} />
+        }
         {data?.profileSettings?.settings?.facebookPixel &&
           <Pixel
             facebookPixel={data?.profileSettings?.settings?.facebookPixel}
@@ -199,6 +198,7 @@ export default async function RootLayout({
         <Footer
           singleColumn={data?.appearances?.footer?.singleColumn}
           footerText={data.appearances?.footer?.footerText}
+          footerLogos={data.appearances?.footer?.footerLogos}
           company_name={data.profileSettings?.company_name}
           image={data.appearances?.footer?.footerLogo?.asset?.url}
           quickLinksHeading={data.appearances?.footer?.quickLinksHeading}

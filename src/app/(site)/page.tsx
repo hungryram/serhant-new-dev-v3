@@ -31,11 +31,6 @@ export default async function Home() {
       pinterest={data?.profileSettings?.social?.pinterest}
       tiktok={data?.profileSettings?.social?.tiktok}
       zillow={data?.profileSettings?.social?.zillow}
-      // FORM
-      emailAlerts={data?.profileSettings?.settings?.emailAlerts}
-      sendFrom={data?.profileSettings?.settings?.sendFrom}
-      emailBcc={data?.profileSettings?.settings?.emailBcc}
-      emailCc={data?.profileSettings?.settings?.emailCc}
     />
   )
 }

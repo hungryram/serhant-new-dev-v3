@@ -5,17 +5,12 @@ import CalltoActionLeftText from "./cta-lefttext";
 import CalltoActionTextImage from "./cta-textimage";
 import FeatureSection from "./feature-section";
 import LogoCloudSection from "./logo-cloud-section";
-import PricingSection from "./pricing-section";
 import TestimonialSection from "./testimonials-section";
 import ContactPage from "./contact-page";
 import ContentSimple from "./content-simple";
-import ServiceGrid from "./services-grid";
-import TeamComponent from "./team-section";
 import BlogSection from "./blog-section";
 import DisclosureSection from "./disclosure-section";
 import DisclosureGrid from "./disclosure-grid";
-import LeadForm from "./lead-form";
-import ServicesNoImage from "./services-no-image";
 import GalleryMasonry from "./gallery-masonry";
 import GallerySwiper from "./gallery-swiper";
 import HeroSwiper from "./hero-swiper";
@@ -27,7 +22,6 @@ import HeroSidebySide from "./hero-sidebyside";
 import HeroBasic from "./hero-basic";
 import DisclosureSeparate from "./disclosure-separate";
 import TestimonialsColumn from "./testimonials-column";
-import LeadFormTwoColumn from "./leadform-two-column";
 import Map from "./map";
 import AvailabilityTable from "./availability-table";
 
@@ -45,10 +39,6 @@ interface Props {
     city: string;
     state: string;
     zip_code: string;
-    emailAlerts: string;
-    sendFrom: string;
-    emailBcc: string;
-    emailCc: string;
     // SOCIAL
     facebook: any;
     youtube: any;
@@ -87,11 +77,6 @@ export default function Main({
     pinterest,
     tiktok,
     zillow,
-    // FORM
-    emailAlerts,
-    sendFrom,
-    emailBcc,
-    emailCc,
 }: Props) {
     return (
         <>
@@ -360,21 +345,6 @@ export default function Main({
                     );
                 }
 
-                if (section._type === 'pricing') {
-                    return (
-                        <PricingSection
-                            key={section?._key}
-                            packages={section?.packages}
-                            packageTextColor={section?.packageTextColor?.hex}
-                            packageBackground={section?.packageBackground?.hex}
-                            columnNumber={section?.columnNumber}
-                            content={section?.content}
-                            textAlign={section?.textAlign}
-                            {...settingsSchema}
-                        />
-                    );
-                }
-
                 if (section._type === 'testimonialBuilder') {
                     return (
                         <>
@@ -541,38 +511,7 @@ export default function Main({
                             pinterest={pinterest}
                             tiktok={tiktok}
                             zillow={zillow}
-                            // FORMS
-                            formBuilder={section?.formBuilder}
-                            emailAlerts={emailAlerts}
-                            sendFrom={sendFrom}
-                            emailBcc={emailBcc}
-                            emailCc={emailCc}
                         />
-                    );
-                }
-
-                if (section._type === 'leadForm') {
-                    return (
-                        <>
-                            {section?.layoutType === 'oneColumn' &&
-                                <LeadForm
-                                    key={section?._key}
-                                    formSchema={section?.formBuilder}
-                                    content={section?.content}
-                                    textAlign={section?.textAlign}
-                                    {...settingsSchema}
-                                />
-                            }
-                            {section?.layoutType === 'twoColumn' &&
-                                <LeadFormTwoColumn
-                                    key={section?._key}
-                                    formSchema={section?.formBuilder}
-                                    content={section?.content}
-                                    textAlign={section?.textAlign}
-                                    {...settingsSchema}
-                                />
-                            }
-                        </>
                     );
                 }
 

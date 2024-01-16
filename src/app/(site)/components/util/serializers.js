@@ -10,7 +10,6 @@ const serializers = {
                 height: `${value.height ?? '600'}`,
                 width: `${value.width ?? '400'}`,
                 playerVars: {
-                    // https://developers.google.com/youtube/player_parameters
                     autoplay: 0,
                 },
             };
@@ -28,6 +27,14 @@ const serializers = {
                 </div>
             )
         },
+        line: ({ value }) => {
+            return (
+                <>
+                    {value.lines === 'horizontal' && <div className="bg-accent h-[2px] w-60 mb-10"/>}
+                    {value.lines === 'vertical' && <div className="bg-accent h-10 w-[2px] mb-10 mx-auto"/>}
+                </>
+            )
+        }
     },
     marks: {
         link: ({ value, children }) => {

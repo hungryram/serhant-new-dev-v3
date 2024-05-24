@@ -9,8 +9,8 @@ import { colorInput } from "@sanity/color-input";
 import { MdOutlineDesignServices, MdPersonOutline } from "react-icons/md"
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { media } from 'sanity-plugin-media'
-import { settingsPlugin } from './sanity/settings';
-import { PreviewPlugin } from './sanity/productionUrl';
+// import { settingsPlugin } from './sanity/settings';
+// import { PreviewPlugin } from './sanity/productionUrl';
 import { googleMapsInput } from '@sanity/google-maps-input';
 
 //  DOCUMENTS
@@ -46,6 +46,7 @@ import secondaryButtonObject from './sanity/schemas/objects/secondary-button'
 import codeBlockObject from './sanity/schemas/objects/codeBlock'
 import backgroundStylesObject from './sanity/schemas/objects/background-style'
 import formBuilderObject from './sanity/schemas/objects/form-builder'
+import lineObject from './sanity/schemas/objects/line'
 
 //  PAGEBUILDER
 import heroBuilder from './sanity/schemas/pagebuilder/hero'
@@ -83,7 +84,8 @@ export default defineConfig({
       navigationDocument,
       pagesDocument,
       testimonialsDocument,
-      // pressDocument,
+      neighborhoodDocument,
+      availabilitiesDocument,
       postType,
       authorType,
       legalDocument,
@@ -105,6 +107,7 @@ export default defineConfig({
       submenuObject,
       navigationObject,
       codeBlockObject,
+      lineObject,
       formBuilderObject,
       // PAGEBUILDER
       heroBuilder,
@@ -123,7 +126,7 @@ export default defineConfig({
       contentBuilder,
       logosBuilder,
       mapSectionBuilder,
-      availabilitiesBuilder
+      availabilitiesBuilder,
     ]
   },
   plugins: [
@@ -198,8 +201,8 @@ export default defineConfig({
     googleMapsInput({
       apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API || ''
     }),
-    settingsPlugin({ types: [appearanceDocument.name, pageSettingsDocument.name, profileDocument.name] }),
-    PreviewPlugin({ types: ['pages', 'team', 'legal', 'services', 'blog', 'homeDesign'] }),
+    // settingsPlugin({ types: [appearanceDocument.name, pageSettingsDocument.name, profileDocument.name] }),
+    // PreviewPlugin({ types: ['pages', 'legal', 'blog', 'homeDesign'] }),
     colorInput(),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
